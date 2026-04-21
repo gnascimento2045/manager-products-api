@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { CategoriesModule } from './categories/categories.module';
 import { Category } from './categories/entities/category.entity';
 import { Product } from './products/entities/product.entity';
 
@@ -21,6 +22,7 @@ import { Product } from './products/entities/product.entity';
         synchronize: true,
       }),
     }),
+    CategoriesModule,
   ],
 })
 export class AppModule {}
