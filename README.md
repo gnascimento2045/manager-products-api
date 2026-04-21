@@ -1,38 +1,40 @@
 # Manager Products API
 
-API REST para gerenciamento de produtos e categorias, construída com NestJS, TypeORM e PostgreSQL.
+REST API for product and category management, built with NestJS, TypeORM and PostgreSQL.
 
-## Tecnologias
+> **Português:** This README is in English. For Portuguese version, see [LEIAME.md](./LEIAME.md)
+
+## Tech Stack
 
 - **Runtime:** Node.js
 - **Framework:** NestJS
 - **ORM:** TypeORM
-- **Banco de dados:** PostgreSQL 16
+- **Database:** PostgreSQL 16
 - **Container:** Docker + Docker Compose
-- **Documentação:** Swagger / OpenAPI
-- **Validação:** class-validator
+- **Docs:** Swagger / OpenAPI
+- **Validation:** class-validator
 
-## Pré-requisitos
+## Prerequisites
 
-- Node.js instalado
-- Docker e Docker Compose instalados
+- Node.js installed
+- Docker and Docker Compose installed
 
-## Começando
+## Getting Started
 
-### 1. Clonar o repositório
+### 1. Clone the repository
 
 ```bash
 git clone https://github.com/gnascimento2045/manager-products-api.git
 cd manager-products-api
 ```
 
-### 2. Configurar variáveis de ambiente
+### 2. Configure environment variables
 
 ```bash
 cp .env.example .env
 ```
 
-Edite o `.env` com suas configurações:
+Edit `.env` with your values:
 
 ```env
 DB_HOST=localhost
@@ -42,83 +44,83 @@ DB_PASS=postgres
 DB_NAME=manager-db
 ```
 
-### 3. Iniciar o banco de dados
+### 3. Start the database
 
 ```bash
 docker compose up -d
 ```
 
-### 4. Instalar dependências
+### 4. Install dependencies
 
 ```bash
 npm install
 ```
 
-### 5. Iniciar o servidor
+### 5. Start the server
 
 ```bash
 npm run start:dev
 ```
 
-API disponível em: `http://localhost:3000`  
-Documentação Swagger: `http://localhost:3000/api/docs`
+API available at: `http://localhost:3000`  
+Swagger docs at: `http://localhost:3000/api/docs`
 
-## Endpoints da API
+## API Endpoints
 
-### Categorias
+### Categories
 
-| Método | Endpoint | Descrição |
-|--------|----------|-----------|
-| GET | /categories | Listar todas as categorias |
-| GET | /categories/:id | Buscar categoria por ID |
-| POST | /categories | Criar categoria |
-| PUT | /categories/:id | Atualizar categoria |
-| DELETE | /categories/:id | Deletar categoria |
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | /categories | List all categories |
+| GET | /categories/:id | Get category by ID |
+| POST | /categories | Create category |
+| PUT | /categories/:id | Update category |
+| DELETE | /categories/:id | Delete category |
 
-### Produtos
+### Products
 
-| Método | Endpoint | Descrição |
-|--------|----------|-----------|
-| GET | /products | Listar produtos (paginado) |
-| GET | /products/:id | Buscar produto por ID |
-| POST | /products | Criar produto |
-| PUT | /products/:id | Atualizar produto |
-| DELETE | /products/:id | Deletar produto |
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | /products | List products (paginated) |
+| GET | /products/:id | Get product by ID |
+| POST | /products | Create product |
+| PUT | /products/:id | Update product |
+| DELETE | /products/:id | Delete product |
 
-### Paginação
+### Pagination
 
 ```
 GET /products?page=1&limit=10
 ```
 
-## Decisões Técnicas
+## Technical Decisions
 
 ### TypeORM
-Escolhi o TypeORM pela integração nativa com decorators do NestJS e pela familiaridade com o padrão ActiveRecord/DataMapper, que funciona bem em projetos de médio/grande porte.
+Chose TypeORM for its native integration with NestJS decorators and familiarity with the ActiveRecord/DataMapper pattern, which works well in medium-to-large projects.
 
 ### synchronize: true (dev only)
-Em desenvolvimento, o TypeORM sincroniza o schema automaticamente com as entidades. Em produção isso deve ser substituído por migrations.
+In development, TypeORM auto-syncs the schema with entities. In production this should be replaced with migrations.
 
 ### Docker Compose
-O PostgreSQL roda em container para garantir consistência de ambiente entre máquinas sem precisar instalar banco local.
+PostgreSQL runs in a container to ensure environment consistency across machines without local database installation.
 
-### Arquitetura Modular
-Cada domínio (categorias, produtos) tem seu próprio módulo, service, controller e DTOs, seguindo as melhores práticas do NestJS e facilitando a escalabilidade.
+### Modular Architecture
+Each domain (categories, products) has its own module, service, controller and DTOs, following NestJS best practices and making the codebase easy to scale.
 
 ## Frontend
 
-O frontend foi construído com:
+The frontend was built with:
 - **React 19** + Vite
 - **TypeScript**
-- **ANTD** - biblioteca de componentes UI. Escolhi o ANTD porque tenho experiência em projetos que usam e achei a aparência mais profissional e fácil de customizar.
+- **ANTD** - UI component library. Chose ANTD because I have experience with projects using it and found it more visually professional and easier to customize.
 
-Repositório: `manager-products-web`
+Repository: [manager-products-web](https://github.com/gnascimento2045/manager-products-web)
 
-## Créditos
+## Credits
 
-Esse projeto foi desenvolvido com ajuda de IA (Claude - Anthropic) para:
-- Estrutura inicial do projeto
-- Sugestões de padrões NestJS
-- Revisão de tipos TypeScript
+This project was developed with assistance from AI (Claude - Anthropic) for:
+- Initial project structure
+- NestJS pattern suggestions
+- TypeScript types review
 
-Todo código foi revisado, entendido e adaptado manualmente.
+All code was reviewed, understood and adapted manually.
