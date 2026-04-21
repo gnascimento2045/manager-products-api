@@ -22,7 +22,7 @@ API REST para gerenciamento de produtos e categorias, construída com NestJS, Ty
 ### 1. Clonar o repositório
 
 ```bash
-git clone <repo-url>
+git clone https://github.com/gnascimento2045/manager-products-api.git
 cd manager-products-api
 ```
 
